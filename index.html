@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindCare AI - Mental Health Awareness & Suicide Prevention</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(to right,#eef7ff,#f7fbff);
+    color:#333;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* Navigation */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 8%;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#2E86DE;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#444;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#2E86DE;
+}
+
+/* Hero Section */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8%;
+}
+
+.hero-text{
+    width:55%;
+}
+
+.hero-text h1{
+    font-size:58px;
+    color:#1B4F72;
+    margin-bottom:20px;
+}
+
+.hero-text span{
+    color:#2E86DE;
+}
+
+.hero-text p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-image{
+    width:40%;
+}
+
+.hero-image img{
+    width:100%;
+}
+
+.btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:#2E86DE;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    margin-right:15px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#21618C;
+}
+
+.btn2{
+    background:#27AE60;
+}
+
+.btn2:hover{
+    background:#1E8449;
+}
+
+/* Section */
+
+section{
+    padding:80px 8%;
+}
+
+.title{
+    text-align:center;
+    font-size:40px;
+    color:#1B4F72;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#2E86DE;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.7;
+}
+
+/* AI Features */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.feature-box{
+    background:linear-gradient(135deg,#2E86DE,#5DADE2);
+    color:white;
+    padding:35px;
+    border-radius:20px;
+}
+
+/* Mood Checker */
+
+.mood{
+    text-align:center;
+    background:white;
+    border-radius:20px;
+    padding:50px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.mood button{
+    padding:15px 25px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:17px;
+    background:#2E86DE;
+    color:white;
+}
+
+.result{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+    color:#1B4F72;
+}
+
+/* Emergency */
+
+.emergency{
+    background:linear-gradient(135deg,#ff6b6b,#ff4757);
+    color:white;
+    text-align:center;
+    border-radius:25px;
+    padding:60px;
+}
+
+.emergency h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.emergency button{
+    margin-top:20px;
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4757;
+    font-size:18px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+footer{
+    background:#1B2631;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-text{
+    width:100%;
+}
+
+.hero-image{
+    width:90%;
+    margin-top:40px;
+}
+
+.hero-text h1{
+    font-size:42px;
+}
+
+nav{
+    flex-direction:column;
+}
+
+nav ul{
+    margin-top:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+<script>
+  window.wxOConfiguration = {
+    orchestrationID: "84a94733647148529f8e03c1c421ad82_4058cf14-6ab3-4767-8dd3-5e49f86bb344",
+    hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+    rootElementID: "root",
+    deploymentPlatform: "ibmcloud",
+    crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/84a94733647148529f8e03c1c421ad82:4058cf14-6ab3-4767-8dd3-5e49f86bb344::",
+    chatOptions: {
+        agentId: "42d34619-c97b-486a-80b8-5217270ac0e2", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+
+<nav>
+    <div class="logo">MindCare AI</div>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#signs">Signs</a></li>
+        <li><a href="#features">AI Features</a></li>
+        <li><a href="#mood">Mood Check</a></li>
+        <li><a href="#help">Help</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+
+    <div class="hero-text">
+        <h1>Agentic AI for <span>Mental Health Awareness</span> & Suicide Prevention</h1>
+
+        <p>
+            Empowering individuals through AI-powered emotional support,
+            mood tracking, early risk detection, personalized wellness plans,
+            and crisis intervention assistance.
+        </p>
+
+        <button class="btn" onclick="startAI()">Talk to AI Agent</button>
+        <button class="btn btn2" onclick="scrollToHelp()">Get Help</button>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/4320/4320337.png">
+    </div>
+
+</div>
+
+<section id="about">
+
+<h2 class="title">Why Mental Health Matters</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Early Detection</h3>
+<p>AI agents identify emotional distress patterns and provide timely interventions before a crisis develops.</p>
+</div>
+
+<div class="card">
+<h3>24/7 Support</h3>
+<p>Users receive continuous emotional assistance, wellness guidance, and coping strategies anytime.</p>
+</div>
+
+<div class="card">
+<h3>Personalized Care</h3>
+<p>Agentic AI adapts responses according to mood, behavior, and emotional history.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="signs">
+
+<h2 class="title">Warning Signs</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>😔 Persistent Sadness</h3>
+<p>Feeling hopeless or emotionally empty for several weeks.</p>
+</div>
+
+<div class="card">
+<h3>😞 Social Isolation</h3>
+<p>Withdrawal from friends, family, and favorite activities.</p>
+</div>
+
+<div class="card">
+<h3>😴 Sleep Changes</h3>
+<p>Sleeping too much or too little may indicate distress.</p>
+</div>
+
+<div class="card">
+<h3>⚠ Suicidal Thoughts</h3>
+<p>Talking about self-harm or feeling like a burden requires immediate support.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="features">
+
+<h2 class="title">Agentic AI Features</h2>
+
+<div class="features">
+
+<div class="feature-box">
+<h3>🤖 AI Emotional Companion</h3>
+<p>Provides empathetic conversations and emotional support.</p>
+</div>
+
+<div class="feature-box">
+<h3>📊 Mood Prediction</h3>
+<p>Tracks mood trends using sentiment analysis.</p>
+</div>
+
+<div class="feature-box">
+<h3>🚨 Crisis Detection</h3>
+<p>Detects high-risk situations and escalates alerts.</p>
+</div>
+
+<div class="feature-box">
+<h3>🧘 Wellness Recommendations</h3>
+<p>Offers meditation, breathing exercises, and coping strategies.</p>
+</div>
+
+<div class="feature-box">
+<h3>📍 Resource Finder</h3>
+<p>Find nearby counselors and mental health services.</p>
+</div>
+
+<div class="feature-box">
+<h3>📈 Progress Tracking</h3>
+<p>Visualizes emotional improvement over time.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="mood">
+
+<h2 class="title">AI Mood Check</h2>
+
+<div class="mood">
+
+<h3>How are you feeling today?</h3>
+
+<br>
+
+<button onclick="showMood('happy')">😊 Happy</button>
+<button onclick="showMood('stress')">😟 Stressed</button>
+<button onclick="showMood('sad')">😔 Sad</button>
+<button onclick="showMood('anxious')">😰 Anxious</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</section>
+
+<section id="help">
+
+<div class="emergency">
+
+<h2>Need Immediate Support?</h2>
+
+<p>
+If you or someone you know is in immediate danger,
+please contact local emergency services or a trusted person immediately.
+</p>
+
+<button onclick="emergencyHelp()">Emergency Help</button>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 MindCare AI | Agentic AI for Mental Health Awareness & Suicide Prevention
+</footer>
+
+<script>
+
+function startAI(){
+    alert("AI Mental Health Agent Activated.\n\nFeatures:\n• Mood Analysis\n• Emotional Support\n• Crisis Detection\n• Personalized Wellness Guidance");
+}
+
+function scrollToHelp(){
+    document.getElementById("help").scrollIntoView();
+}
+
+function emergencyHelp(){
+    alert("Emergency Support:\n\n1. Contact local emergency services.\n2. Reach out to a trusted friend or family member.\n3. Contact a mental health professional or crisis helpline.");
+}
+
+function showMood(mood){
+
+    let message="";
+
+    if(mood==="happy"){
+        message="😊 Great to hear! Keep maintaining healthy habits and positive relationships.";
+    }
+
+    if(mood==="stress"){
+        message="😟 Try deep breathing, short walks, or mindfulness exercises.";
+    }
+
+    if(mood==="sad"){
+        message="😔 Consider talking to someone you trust or a mental health professional.";
+    }
+
+    if(mood==="anxious"){
+        message="😰 Focus on slow breathing and grounding exercises.";
+    }
+
+    document.getElementById("result").innerHTML=message;
+}
+
+</script>
+
+</body>
+</html>
